@@ -39,7 +39,7 @@ end
 Start = tick()
 Heartbeat:Connect(HeartbeatUpdate)
 game:GetService("StarterGui"):SetCore("SendNotification",{ Title = "开杀"; Text ="开杀"; Duration = 2; })
-local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/djdu894/ui/refs/heads/main/ui.lua"))();  
+local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/FengY6/FengY4/refs/heads/main/%E9%A3%8E%E5%BE%A1ui.lua"))();  
 local win = ui:new("风御")
 
 local UITab1 = win:Tab("『信息』",'81451674226562')
