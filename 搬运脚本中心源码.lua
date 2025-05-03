@@ -42,7 +42,7 @@ game:GetService("StarterGui"):SetCore("SendNotification",{ Title = "开杀"; Tex
 local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/FengY6/FengY4/refs/heads/main/%E9%A3%8E%E5%BE%A1ui.lua"))();  
 local win = ui:new("风御")
 
-local UITab1 = win:Tab("『信息』",'81451674226562')
+local UITab1 = win:Tab("『信息』",'81336126823321')
 
 local about = UITab1:section("查看作者信息",true)
 
@@ -64,14 +64,14 @@ about:Toggle("脚本框架变小一点", "", false, function(state)
         game:GetService("CoreGui")["frosty"]:Destroy()
     end)
     
-local UITab2 = win:Tab("『公告』",'81451674226562')
+local UITab2 = win:Tab("『公告』",'81336126823321')
 
 local about = UITab2:section("『公告』",true)
 
 about:Label("风御")
 about:Label("111111")
 
-local UITab1 = win:Tab("通用",'81451674226562')
+local UITab1 = win:Tab("通用",'81336126823321')
 
 local about = UITab1:section("『通用』",true)
 
