@@ -42,7 +42,7 @@ game:GetService("StarterGui"):SetCore("SendNotification",{ Title = "开杀"; Tex
 local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/djdu894/ui/refs/heads/main/ui.lua"))();  
 local win = ui:new("风御")
 
-local UITab1 = win:Tab("『信息』",'4483345998')
+local UITab1 = win:Tab("『信息』",'81451674226562')
 
 local about = UITab1:section("查看作者信息",true)
 
@@ -53,9 +53,6 @@ about:Label("你的账号年龄:"..player.AccountAge.."天")
 about:Label("你的注入器:"..identifyexecutor())
 about:Label("你的用户名:"..game.Players.LocalPlayer.Character.Name)
 about:Label("你现在的服务器名称:"..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name)
-about:Label("你现在的服务器id:"..game.GameId)
-about:Label("你的用户ID:"..game.Players.LocalPlayer.UserId)
-about:Label("获取客户端ID:"..game:GetService("RbxAnalyticsService"):GetClientId())
 about:Toggle("脚本框架变小一点", "", false, function(state)
         if state then
         game:GetService("CoreGui")["frosty"].Main.Style = "DropShadow"
@@ -67,16 +64,17 @@ about:Toggle("脚本框架变小一点", "", false, function(state)
         game:GetService("CoreGui")["frosty"]:Destroy()
     end)
     
-local UITab2 = win:Tab("『公告』",'4483345998')
+local UITab2 = win:Tab("『公告』",'81451674226562')
 
 local about = UITab2:section("『公告』",true)
 
 about:Label("风御")
 about:Label("111111")
 
-local UITab1 = win:Tab("通用",'4483345998')
+local UITab1 = win:Tab("通用",'81451674226562')
 
 local about = UITab1:section("『通用』",true)
+
 about:Slider("步行速度!", "WalkSpeed", game.Players.LocalPlayer.Character.Humanoid.WalkSpeed, 16, 400, false, function(Speed)
   spawn(function() while task.wait() do game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Speed end end)
 end)
