@@ -39,7 +39,7 @@ end
 Start = tick()
 Heartbeat:Connect(HeartbeatUpdate)
 game:GetService("StarterGui"):SetCore("SendNotification",{ Title = "开杀"; Text ="开杀"; Duration = 2; })
-local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/FengY6/FengY4/refs/heads/main/UI%E9%A2%9C%E8%89%B2%E6%B5%8B%E8%AF%95.lua"))();  
+local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/FengY6/FengY4/refs/heads/main/FengYulibrary"))();  
 local win = ui:new("风御")
 
 local UITab1 = win:Tab("『信息』",'81336126823321')
@@ -77,4 +77,101 @@ local about = UITab1:section("『通用』",true)
 
 about:Slider("步行速度!", "WalkSpeed", game.Players.LocalPlayer.Character.Humanoid.WalkSpeed, 16, 400, false, function(Speed)
   spawn(function() while task.wait() do game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Speed end end)
+end)
+
+about:Slider("跳跃高度!", "JumpPower", game.Players.LocalPlayer.Character.Humanoid.JumpPower, 50, 400, false, function(Jump)
+  spawn(function() while task.wait() do game.Players.LocalPlayer.Character.Humanoid.JumpPower = Jump end end)
+end)
+
+about:Slider('设置重力', 'Sliderflag', 196.2, 196.2, 1000,false, function(Value)
+        game.Workspace.Gravity = Value
+    end)
+
+about:Toggle("夜视","Toggle",false,function(Value)
+if Value then
+
+		    game.Lighting.Ambient = Color3.new(1, 1, 1)
+
+		else
+
+		    game.Lighting.Ambient = Color3.new(0, 0, 0)
+
+		end
+end)
+
+about:Toggle("穿墙", "NoClip", false, function(NC)
+  local Workspace = game:GetService("Workspace") local Players = game:GetService("Players") if NC then Clipon = true else Clipon = false end Stepped = game:GetService("RunService").Stepped:Connect(function() if not Clipon == false then for a, b in pairs(Workspace:GetChildren()) do if b.Name == Players.LocalPlayer.Name then for i, v in pairs(Workspace[Players.LocalPlayer.Name]:GetChildren()) do if v:IsA("BasePart") then v.CanCollide = false end end end end else Stepped:Disconnect() end end)
+end)
+
+about:Toggle("人物显示", "RWXS", false, function(RWXS)
+    getgenv().enabled = RWXS getgenv().filluseteamcolor = true getgenv().outlineuseteamcolor = true getgenv().fillcolor = Color3.new(1, 0, 0) getgenv().outlinecolor = Color3.new(1, 1, 1) getgenv().filltrans = 0.5 getgenv().outlinetrans = 0.5 loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/RobloxScripts/main/Highlight-ESP.lua"))()
+end)
+
+about:Button("自杀",function()
+game.Players.LocalPlayer.Character.Humanoid.Health=0
+end)
+
+local UITab1 = win:Tab("『💫灾难最高级💫』",'81336126823321')
+
+local about = UITab1:section("『灾难脚本』",true)
+
+about:Button("灾难脚本中心",function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Biem6ondo/Sonic.exe/refs/heads/main/Encrypted_r1e1m1o1t1e1c1h1e1a1t.txt"))()
+end)
+
+about:Button("灾难范围",function()
+local player = game:GetService("Players").LocalPlayer
+local replicatedStorage = game:GetService("ReplicatedStorage")
+
+local secretEnabled = false
+
+local screenGui = player:WaitForChild("PlayerGui"):FindFirstChild("AbilityToggles") or Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
+screenGui.Name = "AbilityToggles"
+screenGui.ResetOnSpawn = false
+
+local secretButton = screenGui:FindFirstChild("SecretButton") or Instance.new("TextButton", screenGui)
+secretButton.Name = "SecretButton"
+secretButton.Size = UDim2.new(0, 150, 0, 40) -- Smaller size
+secretButton.Position = UDim2.new(0, 10, 0, 10)
+secretButton.Text = "开启范围(关)"
+secretButton.BackgroundColor3 = Color3.new(1, 0, 0)
+
+local sHealButton = screenGui:FindFirstChild("sHealButton") or Instance.new("TextButton", screenGui)
+sHealButton.Name = "sHealButton"
+sHealButton.Size = UDim2.new(0, 150, 0, 40) -- Smaller size
+sHealButton.Position = UDim2.new(0, 10, 0, 60)
+sHealButton.Text = "风御翻译"
+sHealButton.BackgroundColor3 = Color3.new(1, 1, 0)
+
+spawn(function()
+    while true do
+        if secretEnabled then
+            for _, player in pairs(game:GetService("Players"):GetPlayers()) do
+                if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                    local args = {
+                        [1] = player.Character
+                    }
+                    game:GetService("ReplicatedStorage"):WaitForChild("remotes"):WaitForChild("hitReg"):FireServer(unpack(args))
+                end
+            end
+        end
+        wait(0.1)
+    end
+end)
+
+secretButton.MouseButton1Click:Connect(function()
+    secretEnabled = not secretEnabled
+    secretButton.Text = "开启范围 (" .. (secretEnabled and "开" or "关") .. ")"
+    secretButton.BackgroundColor3 = secretEnabled and Color3.new(0, 1, 0) or Color3.new(1, 0, 0)
+end)
+
+sHealButton.MouseButton1Click:Connect(function()
+    local args = {
+    [1] = "overheal",
+    [2] = workspace:WaitForChild(player.Name)
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("remotes"):WaitForChild("abilities"):FireServer(unpack(args))
+
+end)
 end)
