@@ -1,7 +1,3 @@
---丁丁之前的ui源码
---拿去用吧
---by 风御
-
 repeat task.wait() until game:IsLoaded()
 local library = {}
 local ToggleUI = false
@@ -32,7 +28,7 @@ function Ripple(obj)
 		Ripple.BackgroundColor3 = Color3.fromRGB(139, 0, 255)
 		Ripple.BackgroundTransparency = 1.000
 		Ripple.ZIndex = 8
-		Ripple.Image = "rbxassetid://95917771479976"
+		Ripple.Image = "rbxassetid://81336126823321"
 		Ripple.ImageTransparency = 0.800
 		Ripple.ScaleType = Enum.ScaleType.Fit
 		Ripple.ImageColor3 = Color3.fromRGB(139, 0, 255)
@@ -467,7 +463,7 @@ UIG.Parent = Open
         TabIco.BackgroundTransparency = 1.000
         TabIco.BorderSizePixel = 0
         TabIco.Size = UDim2.new(0, 24, 0, 24)
-        TabIco.Image = "rbxassetid://95917771479976" or icon and "rbxassetid://"..icon
+        TabIco.Image = "rbxassetid://81336126823321" or icon and "rbxassetid://"..icon
         TabIco.ImageTransparency = 0.2
         
         TabText.Name = "TabText"
