@@ -28,7 +28,7 @@ function Ripple(obj)
 		Ripple.BackgroundColor3 = Color3.fromRGB(139, 0, 255)
 		Ripple.BackgroundTransparency = 1.000
 		Ripple.ZIndex = 8
-		Ripple.Image = "rbxassetid://18941591417"
+		Ripple.Image = "rbxassetid://81336126823321"
 		Ripple.ImageTransparency = 0.800
 		Ripple.ScaleType = Enum.ScaleType.Fit
 		Ripple.ImageColor3 = Color3.fromRGB(139, 0, 255)
@@ -126,15 +126,15 @@ ALTransparency = 0.6
 ALcolor = Color3.fromRGB(202, 203, 209)
 -------------------------AL------------------------------
 if theme == 'dark' then
-    MainColor = Color3.fromRGB(25, 25, 25)
-    Background = Color3.fromRGB(25, 25, 25)
-    zyColor= Color3.fromRGB(25, 25, 25)
-    beijingColor = Color3.fromRGB(25, 25, 25)
-    else
-    MainColor = Color3.fromRGB(25, 25, 25)
-    Background = Color3.fromRGB(25, 25, 25)
-    zyColor= Color3.fromRGB(25, 25, 25)
-    beijingColor = Color3.fromRGB(25, 25, 25)
+    MainColor = Color3.fromRGB(255, 0, 0)      -- 红色
+    Background = Color3.fromRGB(255, 0, 0)     -- 红色
+    zyColor = Color3.fromRGB(255, 0, 0)        -- 红色
+    beijingColor = Color3.fromRGB(255, 0, 0)   -- 红色
+else
+    MainColor = Color3.fromRGB(255, 0, 0)      -- 红色
+    Background = Color3.fromRGB(255, 0, 0)     -- 红色
+    zyColor = Color3.fromRGB(255, 0, 0)        -- 红色
+    beijingColor = Color3.fromRGB(255, 0, 0)   -- 红色
 end
       local dogent = Instance.new("ScreenGui")
       local Main = Instance.new("Frame")
