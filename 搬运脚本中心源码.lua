@@ -69,7 +69,7 @@ local UITab2 = win:Tab("『公告』",'81336126823321')
 local about = UITab2:section("『公告』",true)
 
 about:Label("风御")
-about:Label("11111")
+about:Label("111")
 
 local UITab1 = win:Tab("通用",'81336126823321')
 
