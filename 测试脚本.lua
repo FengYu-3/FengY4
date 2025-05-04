@@ -59,7 +59,6 @@ end)
 local about = UITab1:section("查看玩家信息",true)
 about:Label("你的账号年龄:"..player.AccountAge.."天")
 about:Label("你的注入器:"..identifyexecutor())
-about:Label("你的用户名:"..game.Players.LocalPlayer.Character.Name)
 about:Toggle("脚本框架变小一点", "", false, function(state)
         if state then
         game:GetService("CoreGui")["frosty"].Main.Style = "DropShadow"
