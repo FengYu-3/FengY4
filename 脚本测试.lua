@@ -47,6 +47,7 @@ local UITab1 = win:Tab("『玩家信息』",'6031097229')
 local about = UITab1:section("查看作者信息",true)
 about:Label("作者：风御")
 about:Label("由风御团队联合制作")
+about:Label("玩家:"game.Players.LocalPlayer.Character.Name""欢迎你游玩此脚本)
 about:Label("不爱玩索尼克exe灾难不要紧至少你已经爱上了❤️")
 
 about:Label("国人灾难脚本制做者")
@@ -70,15 +71,6 @@ about:Toggle("脚本框架变小一点", "", false, function(state)
     end)
   
   
-local UITab2 = win:Tab("『公告』",'95917771479976')
-
-local about = UITab2:section("『公告』",true)
-about:Label("感谢所有支持殺脚本的人")
-about:Label("感谢大家游玩殺脚本")
-about:Label("主脚本作者『风御 X』")
-about:Label("脚本技术支持风御 X")     
-
-
 local UITab3 = win:Tab("『通用』",'95917771479976')
 
 local about = UITab3:section("『通用』",true)
