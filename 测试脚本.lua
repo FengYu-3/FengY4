@@ -39,7 +39,7 @@ end
 Start = tick()
 Heartbeat:Connect(HeartbeatUpdate)
 game:GetService("StarterGui"):SetCore("SendNotification",{ Title = "殺脚本"; Text ="开杀"; Duration = 2; })
-local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/djdu894/ui/refs/heads/main/ui.lua"))();  
+local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/FengY6/FengY4/refs/heads/main/FengYulibrary.lua"))();  
 local win = ui:new("殺脚本")
 --
 local UITab1 = win:Tab("『用户信息』",'6031097229')
