@@ -71,9 +71,9 @@ local about = UITab2:section("『公告』",true)
 about:Label("风御")
 about:Label("111")
 
-local UITab1 = win:Tab("通用",'81336126823321')
+local UITab3 = win:Tab("通用",'81336126823321')
 
-local about = UITab1:section("『通用』",true)
+local about = UITab3:section("『通用』",true)
 
 about:Slider("步行速度!", "WalkSpeed", game.Players.LocalPlayer.Character.Humanoid.WalkSpeed, 16, 400, false, function(Speed)
   spawn(function() while task.wait() do game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Speed end end)
@@ -111,13 +111,9 @@ about:Button("自杀",function()
 game.Players.LocalPlayer.Character.Humanoid.Health=0
 end)
 
-local UITab1 = win:Tab("『💫灾难最高级💫』",'81336126823321')
+local UITab4 = win:Tab("『💫灾难最高级💫』",'81336126823321')
 
-local about = UITab1:section("『灾难脚本』",true)
-
-about:Button("灾难脚本中心",function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Biem6ondo/Sonic.exe/refs/heads/main/Encrypted_r1e1m1o1t1e1c1h1e1a1t.txt"))()
-end)
+local about = UITab4:section("『灾难脚本』",true)
 
 about:Button("灾难范围",function()
 local player = game:GetService("Players").LocalPlayer
