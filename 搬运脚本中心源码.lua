@@ -39,7 +39,7 @@ end
 Start = tick()
 Heartbeat:Connect(HeartbeatUpdate)
 game:GetService("StarterGui"):SetCore("SendNotification",{ Title = "开杀"; Text ="开杀"; Duration = 2; })
-local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/FengY6/FengY4/refs/heads/main/FengYulibrary.lua"))();  
+local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/FengY6/FengY4/refs/heads/main/UI%E9%A2%9C%E8%89%B2%E6%B5%8B%E8%AF%95.lua"))();  
 local win = ui:new("风御")
 
 local UITab1 = win:Tab("『信息』",'81336126823321')
@@ -69,7 +69,7 @@ local UITab2 = win:Tab("『公告』",'81336126823321')
 local about = UITab2:section("『公告』",true)
 
 about:Label("风御")
-about:Label("111111")
+about:Label("11111")
 
 local UITab1 = win:Tab("通用",'81336126823321')
 
