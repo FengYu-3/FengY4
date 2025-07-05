@@ -1,6 +1,6 @@
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/FengYu-3/FengY4/refs/heads/main/%E5%93%A6.lua", true))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/FengYu-3/FengY4/refs/heads/main/main.lua", true))()
 ----------------------------------------------------------------------------------------------------------------------------------------
-local window = library:new("神青脚本中心V5")--V1
+local window = library:new("汽水脚本")--V1
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 local creds = window:Tab("关于", "6031097229")
