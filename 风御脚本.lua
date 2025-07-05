@@ -1,4 +1,4 @@
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/FengYu-3/FengY4/refs/heads/main/main.lua", true))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/FengYu-3/FengY4/refs/heads/main/%E6%B1%BD%E6%B0%B4ui.lua", true))()
 ----------------------------------------------------------------------------------------------------------------------------------------
 local window = library:new("汽水脚本")--V1
 ----------------------------------------------------------------------------------------------------------------------------------------
