@@ -248,54 +248,43 @@ local creds = window:Tab("哦",'6031097229')
     
 local credits = creds:section("好东西",true)
 
-    local Players = about:Dropdown("选择玩家", 'Dropdown', dropdown, function(v)
-    playernamedied = v
-end)
+local viewedPlayer = nil
+local viewbutton = {Text = "监视"}
 
-game.Players.ChildAdded:Connect(function(player)
-    dropdown[player.UserId] = player.Name
-    Players:AddOption(player.Name)
-end)
+local playersframe = makeFrame(scrollingFrame, "玩家", Color3.fromRGB(1, 1, 1))
+local playercframe = makeFrame(playersframe, "playerscontrol", Color3.fromRGB(0, 0, 0))
+playercframe.BorderSizePixel = 1.000
+playercframe.BorderColor3 = Color3.fromRGB(27, 42, 53)
+playercframe.Position = UDim2.new(0, 10, -1, -40)
+playercframe.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+playercframe.Visible = true
+local playerframef = makeFrame(playercframe, "friends", Color3.fromRGB(1, 1, 1))
+playerframef.Position = UDim2.new(1, 10, 0, 5)
 
-game.Players.ChildRemoved:Connect(function(player)
-    Players:RemoveOption(player.Name)
-    for k, v in pairs(dropdown) do
-        if v == player.Name then
-            dropdown[k] = nil
-        end
-    end
-end)
-
-    credits:Button("传送到玩家旁边", function()
-    local HumRoot = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local tp_player = game.Players:FindFirstChild(playernamedied)
-    if tp_player and tp_player.Character and tp_player.Character.HumanoidRootPart then
-        HumRoot.CFrame = tp_player.Character.HumanoidRootPart.CFrame + Vector3.new(0, 3, 0)
-        Notify("冷", "已经传送到玩家身边", "rbxassetid://", 5)
-    else
-        Notify("冷", "无法传送 玩家已消失", "rbxassetid://", 5)
-    end
-end)
-
-    credits:Button("把玩家传送过来", function()
-    local HumRoot = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local tp_player = game.Players:FindFirstChild(playernamedied)
-    if tp_player and tp_player.Character and tp_player.Character.HumanoidRootPart then
-        tp_player.Character.HumanoidRootPart.CFrame = HumRoot.CFrame + Vector3.new(0, 3, 0)
-        Notify("冷", "已传送过来", "rbxassetid://", 5)
-    else
-        Notify("冷", "无法传送 玩家已消失", "rbxassetid://", 5)
-    end
-end)
-
-    credits:Toggle("查看玩家", 'Toggleflag', false, function(state)
-    if state then
-        game:GetService('Workspace').CurrentCamera.CameraSubject =
-            game:GetService('Players'):FindFirstChild(playernamedied).Character.Humanoid
-            Notify("冷", "已开启", "rbxassetid://", 5)
-    else
-        Notify("冷", "已关闭", "rbxassetid://", 5)
-        local lp = game.Players.LocalPlayer
-        game:GetService('Workspace').CurrentCamera.CameraSubject = lp.Character.Humanoid
-    end
-end)
+local function addbtn(parent, plr)
+	local playerbutton = Instance.new("TextButton")
+	playerbutton.Name = plr.Name
+	playerbutton.Parent = parent
+	if plr == lp then
+		playerbutton.BackgroundColor3 = Color3.fromRGB(100, 200, 200)
+	else
+		playerbutton.BackgroundColor3 = Color3.fromRGB(136, 136, 136)
+	end
+	playerbutton.BorderSizePixel = 0
+	playerbutton.Size = UDim2.new(1, -10, 0, 20)
+	playerbutton.Font = Enum.Font.SourceSans
+	playerbutton.Text = plr.Name
+	if plr.Name ~= plr.DisplayName then
+		playerbutton.Text = playerbutton.Text .. " (" .. plr.DisplayName .. ")"
+	end
+	playerbutton.TextColor3 = Color3.fromRGB(0, 0, 0)
+	playerbutton.TextSize = 15.000
+	playerbutton.MouseButton1Click:Connect(function()
+        print("ceshi")
+		playercframe.framelabel.Text = "玩家:" .. playerbutton.Text
+		currentplayer = plr
+		playercframe.Visible = true
+		playerframef.Visible = false
+		viewbutton.Text = ((viewedPlayer == plr) and "退出监视") or "监视"
+	end)
+end
