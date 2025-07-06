@@ -138,7 +138,7 @@ GunHook = hookmetamethod(game, "__namecall", function(self, ...)
         end;
         return GunHook(self, unpack(args));
 end);
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/FengYu-3/FengY4/refs/heads/main/%E6%B1%BD%E6%B0%B4ui.lua", true))()
+local FengYu = loadstring(game:HttpGet("https://raw.githubusercontent.com/FengYu-3/FengY4/refs/heads/main/%E6%B1%BD%E6%B0%B4ui.lua", true))()
 ----------------------------------------------------------------------------------------------------------------------------------------
 local window = library:new("汽水脚本")--V1
 ----------------------------------------------------------------------------------------------------------------------------------------
@@ -226,25 +226,25 @@ game.Players.ChildRemoved:Connect(function(player)
     end
 end)
 
-about:Button("传送到玩家旁边", function()
+credits:Button("传送到玩家旁边", function()
     local HumRoot = game.Players.LocalPlayer.Character.HumanoidRootPart
     local tp_player = game.Players:FindFirstChild(playernamedied)
     if tp_player and tp_player.Character and tp_player.Character.HumanoidRootPart then
         HumRoot.CFrame = tp_player.Character.HumanoidRootPart.CFrame + Vector3.new(0, 3, 0)
-        Notify("冷", "已经传送到玩家身边", "rbxassetid://", 5)
+        Notify("哦", "已经传送到玩家身边", "rbxassetid://", 5)
     else
-        Notify("冷", "无法传送 玩家已消失", "rbxassetid://", 5)
+        Notify("哦", "无法传送 玩家已消失", "rbxassetid://", 5)
     end
 end)
 
-about:Button("把玩家传送过来", function()
+credits:Button("把玩家传送过来", function()
     local HumRoot = game.Players.LocalPlayer.Character.HumanoidRootPart
     local tp_player = game.Players:FindFirstChild(playernamedied)
     if tp_player and tp_player.Character and tp_player.Character.HumanoidRootPart then
         tp_player.Character.HumanoidRootPart.CFrame = HumRoot.CFrame + Vector3.new(0, 3, 0)
-        Notify("冷", "已传送过来", "rbxassetid://", 5)
+        Notify("哦", "已传送过来", "rbxassetid://", 5)
     else
-        Notify("冷", "无法传送 玩家已消失", "rbxassetid://", 5)
+        Notify("哦", "无法传送 玩家已消失", "rbxassetid://", 5)
     end
 end)
 
@@ -252,9 +252,9 @@ about:Toggle("查看玩家", 'Toggleflag', false, function(state)
     if state then
         game:GetService('Workspace').CurrentCamera.CameraSubject =
             game:GetService('Players'):FindFirstChild(playernamedied).Character.Humanoid
-            Notify("冷", "已开启", "rbxassetid://", 5)
+            Notify("哦", "已开启", "rbxassetid://", 5)
     else
-        Notify("冷", "已关闭", "rbxassetid://", 5)
+        Notify("哦", "已关闭", "rbxassetid://", 5)
         local lp = game.Players.LocalPlayer
         game:GetService('Workspace').CurrentCamera.CameraSubject = lp.Character.Humanoid
     end
