@@ -138,14 +138,23 @@ GunHook = hookmetamethod(game, "__namecall", function(self, ...)
         end;
         return GunHook(self, unpack(args));
 end);
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/FengYu-3/FengY4/refs/heads/main/%E6%B1%BD%E6%B0%B4ui.lua", true))()
-----------------------------------------------------------------------------------------------------------------------------------------
-local win = library:new("汽脚本")--V1
-----------------------------------------------------------------------------------------------------------------------------------------
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/FengYu-3/FengY4/refs/heads/main/%E6%B1%BD%E6%B0%B4ui.lua"))()     
+local win = library:new("脚本吗")
+--
+local UITab1 = win:Tab("『信息』",'16060333448')
 
-local UITab1 = win:Tab("『原来如此』",'6031097229')
+local about = UITab1:section("『ZCLY』",false)
 
-local about = UITab1:section("『原来如此』",false)
+about:Label("朝辞落陨在这里感谢丁丁对我的照顾")
+about:Label("同时也感谢大家对我的不离不弃，感谢大家")
+
+about:Button("点我复制落陨中心交流群",function()
+    setclipboard("1001493128")
+end)
+
+local UITab1 = win:Tab("『通用→自瞄→ESP』",'16060333448')
+
+local about = UITab1:section("『通用』",false)
 
 local Players = about:Dropdown("选择玩家", 'Dropdown', dropdown, function(v)
     playernamedied = v
@@ -198,3 +207,4 @@ about:Toggle("查看玩家", 'Toggleflag', false, function(state)
         game:GetService('Workspace').CurrentCamera.CameraSubject = lp.Character.Humanoid
     end
 end)
+
