@@ -140,12 +140,12 @@ GunHook = hookmetamethod(game, "__namecall", function(self, ...)
 end);
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/FengYu-3/FengY4/refs/heads/main/%E6%B1%BD%E6%B0%B4ui.lua", true))()
 ----------------------------------------------------------------------------------------------------------------------------------------
-local window = library:new("汽脚本")--V1
+local win = library:new("汽脚本")--V1
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-local UITab1 = window:Tab("『原来如此』",'6031097229')
+local UITab1 = win:Tab("『原来如此』",'6031097229')
 
-local about = UITab6:section("『原来如此』",false)
+local about = UITab1:section("『原来如此』",false)
 
 local Players = about:Dropdown("选择玩家", 'Dropdown', dropdown, function(v)
     playernamedied = v
