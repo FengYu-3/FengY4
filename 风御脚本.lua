@@ -185,7 +185,7 @@ credits:Toggle("脚本框架变小一点", "", false, function(state)
 local creds = window:Tab("通用",'6031097229')
 
 local credits = creds:section("通用脚本",true)
-    credits:Textbox("快速跑步(推荐调2)", "tpwalking", "输入", function(king)
+    credits:Textbox("快速跑步(推荐调2)", "tpwalking", "风御", function(king)
 local tspeed = king
 local hb = game:GetService("RunService").Heartbeat
 local tpwalking = true
@@ -212,6 +212,10 @@ end)
     game.Workspace.Gravity = Value
 end)
     
+credits:Textbox("重力设置", "Gravity", "输入", function(Gravity)
+  spawn(function() while task.wait() do game.Workspace.Gravity = Gravity end end)
+end)
+    
     credits:Slider('修改高度', 'Slider', 2, 2, 9999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.HipHeight = Value
 end)
@@ -232,6 +236,8 @@ end)
     game.Players.LocalPlayer.Character.Humanoid.Health = Value
 end)
     
+bin:Label("------------------------------")
+    
 credits:Toggle("穿墙", "NoClip", false, function(NC)
   local Workspace = game:GetService("Workspace") local Players = game:GetService("Players") if NC then Clipon = true else Clipon = false end Stepped = game:GetService("RunService").Stepped:Connect(function() if not Clipon == false then for a, b in pairs(Workspace:GetChildren()) do if b.Name == Players.LocalPlayer.Name then for i, v in pairs(Workspace[Players.LocalPlayer.Name]:GetChildren()) do if v:IsA("BasePart") then v.CanCollide = false end end end end else Stepped:Disconnect() end end)
     end)
@@ -244,47 +250,198 @@ credits:Toggle("夜视脚本", "", false, function(state)
         end
     end)
     
-local creds = window:Tab("哦",'6031097229')
+credits:Button("无限跳",function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/V5PQy3y0", true))()
+end)
     
-local credits = creds:section("好东西",true)
+credits:Button("玩家加入游戏提示",function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/boyscp/scriscriptsc/main/bbn.lua"))()
+end)
+    
+credits:Button("人物体积……汉化",function()
+    loadstring(game:HttpGet("https://shz.al/~KSJXBC62"))()
+end)
+    
+    credits:Button(
+    "飞车（可能别人看不见）",
+    function()
+        local Speed = 100
 
-local viewedPlayer = nil
-local viewbutton = {Text = "监视"}
+	-- Gui to Lua
+	-- Version: 3.2
+	local HumanoidRP = game.Players.LocalPlayer.Character.HumanoidRootPart
+	-- Instances:
 
-local playersframe = makeFrame(scrollingFrame, "玩家", Color3.fromRGB(1, 1, 1))
-local playercframe = makeFrame(playersframe, "playerscontrol", Color3.fromRGB(0, 0, 0))
-playercframe.BorderSizePixel = 1.000
-playercframe.BorderColor3 = Color3.fromRGB(27, 42, 53)
-playercframe.Position = UDim2.new(0, 10, -1, -40)
-playercframe.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-playercframe.Visible = true
-local playerframef = makeFrame(playercframe, "friends", Color3.fromRGB(1, 1, 1))
-playerframef.Position = UDim2.new(1, 10, 0, 5)
+	local ScreenGui = Instance.new("ScreenGui")
+	local W = Instance.new("TextButton")
+	local S = Instance.new("TextButton")
+	local A = Instance.new("TextButton")
+	local D = Instance.new("TextButton")
+	local Fly = Instance.new("TextButton")
+	local unfly = Instance.new("TextButton")
+	local StopFly = Instance.new("TextButton")
 
-local function addbtn(parent, plr)
-	local playerbutton = Instance.new("TextButton")
-	playerbutton.Name = plr.Name
-	playerbutton.Parent = parent
-	if plr == lp then
-		playerbutton.BackgroundColor3 = Color3.fromRGB(100, 200, 200)
-	else
-		playerbutton.BackgroundColor3 = Color3.fromRGB(136, 136, 136)
-	end
-	playerbutton.BorderSizePixel = 0
-	playerbutton.Size = UDim2.new(1, -10, 0, 20)
-	playerbutton.Font = Enum.Font.SourceSans
-	playerbutton.Text = plr.Name
-	if plr.Name ~= plr.DisplayName then
-		playerbutton.Text = playerbutton.Text .. " (" .. plr.DisplayName .. ")"
-	end
-	playerbutton.TextColor3 = Color3.fromRGB(0, 0, 0)
-	playerbutton.TextSize = 15.000
-	playerbutton.MouseButton1Click:Connect(function()
-        print("ceshi")
-		playercframe.framelabel.Text = "玩家:" .. playerbutton.Text
-		currentplayer = plr
-		playercframe.Visible = true
-		playerframef.Visible = false
-		viewbutton.Text = ((viewedPlayer == plr) and "退出监视") or "监视"
+	--Properties:
+
+	ScreenGui.Parent = game.CoreGui
+	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+	unfly.Name = "上"
+	unfly.Parent = ScreenGui
+	unfly.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	unfly.Position = UDim2.new(0.694387913, 0, 0.181818187, 0)
+	unfly.Size = UDim2.new(0, 72, 0, 50)
+	unfly.Font = Enum.Font.SourceSans
+	unfly.Text = "停止飞行"
+	unfly.TextColor3 = Color3.fromRGB(127, 34, 548)
+	unfly.TextScaled = true
+	unfly.TextSize = 14.000
+	unfly.TextWrapped = 
+		unfly.MouseButton1Down:Connect(function()
+		HumanoidRP:FindFirstChildOfClass("BodyVelocity"):Destroy()
+		HumanoidRP:FindFirstChildOfClass("BodyGyro"):Destroy()
 	end)
-end
+
+	StopFly.Name = "关闭飞行"
+	StopFly.Parent = ScreenGui
+	StopFly.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	StopFly.Position = UDim2.new(0.695689976, 0, 0.0213903747, 0)
+	StopFly.Size = UDim2.new(0, 71, 0, 50)
+	StopFly.Font = Enum.Font.SourceSans
+	StopFly.Text = "关闭飞行"
+	StopFly.TextColor3 = Color3.fromRGB(170, 0, 255)
+	StopFly.TextScaled = true
+	StopFly.TextSize = 14.000
+	StopFly.TextWrapped = true
+	StopFly.MouseButton1Down:Connect(function()
+		HumanoidRP.Anchored = true
+	end)
+
+	Fly.Name = "开启飞车"
+	Fly.Parent = ScreenGui
+	Fly.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	Fly.Position = UDim2.new(0.588797748, 0, 0.0213903747, 0)
+	Fly.Size = UDim2.new(0, 66, 0, 50)
+	Fly.Font = Enum.Font.SourceSans
+	Fly.Text = "飞行"
+	Fly.TextColor3 = Color3.fromRGB(170, 0, 127)
+	Fly.TextScaled = true
+	Fly.TextSize = 14.000
+	Fly.TextWrapped = true
+	Fly.MouseButton1Down:Connect(function()
+		local BV = Instance.new("BodyVelocity",HumanoidRP)
+		local BG = Instance.new("BodyGyro",HumanoidRP)
+		BG.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
+		BG.D = 5000
+		BG.P = 50000
+		BG.CFrame = game.Workspace.CurrentCamera.CFrame
+		BV.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
+	end)
+
+	W.Name = "W"
+	W.Parent = ScreenGui
+	W.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	W.Position = UDim2.new(0.161668837, 0, 0.601604283, 0)
+	W.Size = UDim2.new(0, 58, 0, 50)
+	W.Font = Enum.Font.SourceSans
+	W.Text = "↑"
+	W.TextColor3 = Color3.fromRGB(226, 226, 526)
+	W.TextScaled = true
+	W.TextSize = 5.000
+	W.TextWrapped = true
+	W.MouseButton1Down:Connect(function()
+		HumanoidRP.Anchored = false
+		HumanoidRP:FindFirstChildOfClass("BodyVelocity"):Destroy()
+		HumanoidRP:FindFirstChildOfClass("BodyGyro"):Destroy()
+		wait(.1)
+		local BV = Instance.new("BodyVelocity",HumanoidRP)
+		local BG = Instance.new("BodyGyro",HumanoidRP)
+		BG.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
+		BG.D = 50000
+		BG.P = 50000
+		BG.CFrame = game.Workspace.CurrentCamera.CFrame
+		BV.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
+		BV.Velocity = game.Workspace.CurrentCamera.CFrame.LookVector * Speed
+	end)
+
+
+	S.Name = "S"
+	S.Parent = ScreenGui
+	S.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	S.Position = UDim2.new(0.161668837, 0, 0.735294104, 0)
+	S.Size = UDim2.new(0, 58, 0, 50)
+	S.Font = Enum.Font.SourceSans
+	S.Text = "↓"
+	S.TextColor3 = Color3.fromRGB(255, 255, 255)
+	S.TextScaled = true
+	S.TextSize = 14.000
+	S.TextWrapped = true
+	S.MouseButton1Down:Connect(function()
+		HumanoidRP.Anchored = false
+		HumanoidRP:FindFirstChildOfClass("BodyVelocity"):Destroy()
+		HumanoidRP:FindFirstChildOfClass("BodyGyro"):Destroy()
+		wait(.1)
+		local BV = Instance.new("BodyVelocity",HumanoidRP)
+		local BG = Instance.new("BodyGyro",HumanoidRP)
+		BG.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
+		BG.D = 5000
+		BG.P = 50000
+		BG.CFrame = game.Workspace.CurrentCamera.CFrame
+		BV.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
+		BV.Velocity = game.Workspace.CurrentCamera.CFrame.LookVector * -Speed
+	end)
+    end
+)
+    
+    credits:Button(
+        "自杀脚本",
+        function()
+            game.Players.LocalPlayer.Character.Humanoid.Health=0
+HumanDied = true
+        end
+    )    
+    
+credits:Button("fps显示",function()
+loadstring(game:HttpGet("https://pastefy.app/d9j82YJr/raw",true))()
+end)
+    
+credits:Button("改fps",function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/gclich/FPS-X-GUI/main/FPS_X.lua"))()
+end)
+    
+credits:Button("解帧",function()
+loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-FpsBoost-9260"))()
+end)
+    
+credits:Button(
+        "防止挂机",
+        function()
+            wait(2)
+	print("Anti Afk On")
+		local vu = game:GetService("VirtualUser")
+		game:GetService("Players").LocalPlayer.Idled:connect(function()
+		   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+		   wait(1)
+		   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+		end)
+	local CoreGui = game:GetService("StarterGui")
+CoreGui:SetCore("SendNotification", {
+    Title = "惊喜吗",
+    Text = "恭喜你开启失败",
+    Duration = 10,
+})
+        end
+    )    
+    
+credits:Button("死亡笔记",function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/dingding123hhh/tt/main/%E6%AD%BB%E4%BA%A1%E7%AC%94%E8%AE%B0%20(1).txt"))()
+end)
+    
+credits:Button("飞檐走壁",function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/zXk4Rq2r"))()
+end)
+    
+credits:Button("踏空行走",function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Float'))()
+end)
+    
