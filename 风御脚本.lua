@@ -236,7 +236,7 @@ end)
     game.Players.LocalPlayer.Character.Humanoid.Health = Value
 end)
     
-bin:Label("------------------------------")
+bin:Label("---------------")
     
 credits:Toggle("穿墙", "NoClip", false, function(NC)
   local Workspace = game:GetService("Workspace") local Players = game:GetService("Players") if NC then Clipon = true else Clipon = false end Stepped = game:GetService("RunService").Stepped:Connect(function() if not Clipon == false then for a, b in pairs(Workspace:GetChildren()) do if b.Name == Players.LocalPlayer.Name then for i, v in pairs(Workspace[Players.LocalPlayer.Name]:GetChildren()) do if v:IsA("BasePart") then v.CanCollide = false end end end end else Stepped:Disconnect() end end)
@@ -250,149 +250,6 @@ credits:Toggle("夜视脚本", "", false, function(state)
         end
     end)
     
-credits:Button("无限跳",function()
-    loadstring(game:HttpGet("https://pastebin.com/raw/V5PQy3y0", true))()
-end)
-    
-credits:Button("玩家加入游戏提示",function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/boyscp/scriscriptsc/main/bbn.lua"))()
-end)
-    
-credits:Button("人物体积……汉化",function()
-    loadstring(game:HttpGet("https://shz.al/~KSJXBC62"))()
-end)
-    
-    credits:Button(
-    "飞车（可能别人看不见）",
-    function()
-        local Speed = 100
-
-	-- Gui to Lua
-	-- Version: 3.2
-	local HumanoidRP = game.Players.LocalPlayer.Character.HumanoidRootPart
-	-- Instances:
-
-	local ScreenGui = Instance.new("ScreenGui")
-	local W = Instance.new("TextButton")
-	local S = Instance.new("TextButton")
-	local A = Instance.new("TextButton")
-	local D = Instance.new("TextButton")
-	local Fly = Instance.new("TextButton")
-	local unfly = Instance.new("TextButton")
-	local StopFly = Instance.new("TextButton")
-
-	--Properties:
-
-	ScreenGui.Parent = game.CoreGui
-	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-	unfly.Name = "上"
-	unfly.Parent = ScreenGui
-	unfly.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	unfly.Position = UDim2.new(0.694387913, 0, 0.181818187, 0)
-	unfly.Size = UDim2.new(0, 72, 0, 50)
-	unfly.Font = Enum.Font.SourceSans
-	unfly.Text = "停止飞行"
-	unfly.TextColor3 = Color3.fromRGB(127, 34, 548)
-	unfly.TextScaled = true
-	unfly.TextSize = 14.000
-	unfly.TextWrapped = 
-		unfly.MouseButton1Down:Connect(function()
-		HumanoidRP:FindFirstChildOfClass("BodyVelocity"):Destroy()
-		HumanoidRP:FindFirstChildOfClass("BodyGyro"):Destroy()
-	end)
-
-	StopFly.Name = "关闭飞行"
-	StopFly.Parent = ScreenGui
-	StopFly.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	StopFly.Position = UDim2.new(0.695689976, 0, 0.0213903747, 0)
-	StopFly.Size = UDim2.new(0, 71, 0, 50)
-	StopFly.Font = Enum.Font.SourceSans
-	StopFly.Text = "关闭飞行"
-	StopFly.TextColor3 = Color3.fromRGB(170, 0, 255)
-	StopFly.TextScaled = true
-	StopFly.TextSize = 14.000
-	StopFly.TextWrapped = true
-	StopFly.MouseButton1Down:Connect(function()
-		HumanoidRP.Anchored = true
-	end)
-
-	Fly.Name = "开启飞车"
-	Fly.Parent = ScreenGui
-	Fly.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Fly.Position = UDim2.new(0.588797748, 0, 0.0213903747, 0)
-	Fly.Size = UDim2.new(0, 66, 0, 50)
-	Fly.Font = Enum.Font.SourceSans
-	Fly.Text = "飞行"
-	Fly.TextColor3 = Color3.fromRGB(170, 0, 127)
-	Fly.TextScaled = true
-	Fly.TextSize = 14.000
-	Fly.TextWrapped = true
-	Fly.MouseButton1Down:Connect(function()
-		local BV = Instance.new("BodyVelocity",HumanoidRP)
-		local BG = Instance.new("BodyGyro",HumanoidRP)
-		BG.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
-		BG.D = 5000
-		BG.P = 50000
-		BG.CFrame = game.Workspace.CurrentCamera.CFrame
-		BV.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
-	end)
-
-	W.Name = "W"
-	W.Parent = ScreenGui
-	W.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	W.Position = UDim2.new(0.161668837, 0, 0.601604283, 0)
-	W.Size = UDim2.new(0, 58, 0, 50)
-	W.Font = Enum.Font.SourceSans
-	W.Text = "↑"
-	W.TextColor3 = Color3.fromRGB(226, 226, 526)
-	W.TextScaled = true
-	W.TextSize = 5.000
-	W.TextWrapped = true
-	W.MouseButton1Down:Connect(function()
-		HumanoidRP.Anchored = false
-		HumanoidRP:FindFirstChildOfClass("BodyVelocity"):Destroy()
-		HumanoidRP:FindFirstChildOfClass("BodyGyro"):Destroy()
-		wait(.1)
-		local BV = Instance.new("BodyVelocity",HumanoidRP)
-		local BG = Instance.new("BodyGyro",HumanoidRP)
-		BG.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
-		BG.D = 50000
-		BG.P = 50000
-		BG.CFrame = game.Workspace.CurrentCamera.CFrame
-		BV.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
-		BV.Velocity = game.Workspace.CurrentCamera.CFrame.LookVector * Speed
-	end)
-
-
-	S.Name = "S"
-	S.Parent = ScreenGui
-	S.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	S.Position = UDim2.new(0.161668837, 0, 0.735294104, 0)
-	S.Size = UDim2.new(0, 58, 0, 50)
-	S.Font = Enum.Font.SourceSans
-	S.Text = "↓"
-	S.TextColor3 = Color3.fromRGB(255, 255, 255)
-	S.TextScaled = true
-	S.TextSize = 14.000
-	S.TextWrapped = true
-	S.MouseButton1Down:Connect(function()
-		HumanoidRP.Anchored = false
-		HumanoidRP:FindFirstChildOfClass("BodyVelocity"):Destroy()
-		HumanoidRP:FindFirstChildOfClass("BodyGyro"):Destroy()
-		wait(.1)
-		local BV = Instance.new("BodyVelocity",HumanoidRP)
-		local BG = Instance.new("BodyGyro",HumanoidRP)
-		BG.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
-		BG.D = 5000
-		BG.P = 50000
-		BG.CFrame = game.Workspace.CurrentCamera.CFrame
-		BV.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
-		BV.Velocity = game.Workspace.CurrentCamera.CFrame.LookVector * -Speed
-	end)
-    end
-)
-    
     credits:Button(
         "自杀脚本",
         function()
@@ -401,16 +258,20 @@ HumanDied = true
         end
     )    
     
+credits:Button("无限跳",function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/V5PQy3y0", true))()
+end)
+    
+credits:Button("玩家加入游戏提示",function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/boyscp/scriscriptsc/main/bbn.lua"))()
+end)
+    
 credits:Button("fps显示",function()
 loadstring(game:HttpGet("https://pastefy.app/d9j82YJr/raw",true))()
 end)
     
 credits:Button("改fps",function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/gclich/FPS-X-GUI/main/FPS_X.lua"))()
-end)
-    
-credits:Button("解帧",function()
-loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-FpsBoost-9260"))()
 end)
     
 credits:Button(
@@ -444,4 +305,164 @@ end)
 credits:Button("踏空行走",function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Float'))()
 end)
+    
+local creds = window:Tab("甩飞",'6031097229')
+
+local credits = creds:section("甩飞功能",true)
+
+credits:Button("旋转甩飞",function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dingding123hhh/tt/main/%E6%97%8B%E8%BD%AC.lua"))()
+end)
+    
+credits:Button("碰到就飞",function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/0Ben1/fe./main/Fling%20GUI"))()
+end)
+    
+credits:Button("甩飞所有人",function()
+loadstring(game:HttpGet("https://pastebin.com/raw/zqyDSUWX"))()
+end)
+    
+credits:Button("输入名字起飞",function()
+loadstring(game:HttpGet(('https://pastefy.app/9SmQXduA/raw'),true))()
+end)
+    
+local creds = window:Tab("范围",'6031097229')
+
+local credits = creds:section("范围",true)
+
+creditshubb:Textbox("自定义范围（尽量400以下）", "HitBox", "输入", function(Value)
+   _G.HeadSize = Value
+    _G.Disabled = true 
+   game:GetService('RunService').RenderStepped:connect(function()
+    if _G.Disabled then
+    for i,v in next, game:GetService('Players'):GetPlayers() do
+    if v.Name ~= game:GetService('Players').LocalPlayer.Name then 
+    pcall(function()
+    v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) 
+   v.Character.HumanoidRootPart.Transparency = 0.7 
+   v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really red")
+    v.Character.HumanoidRootPart.Material = "Neon"
+    v.Character.HumanoidRootPart.CanCollide = false
+    end)
+    end 
+   end 
+   end
+    end)
+end)
+    
+
+creditshubb:Button("范围10", function()
+    _G.HeadSize = 10 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
+end)
+
+creditshubb:Button("范围20", function()
+    _G.HeadSize = 20 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
+end)
+
+creditshubb:Button("范围30", function()
+    _G.HeadSize = 30 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
+end)
+
+creditshubb:Button("范围40", function()
+    _G.HeadSize = 40 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
+end)
+
+creditshubb:Button("范围50", function()
+    _G.HeadSize = 50 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
+end)
+
+creditshubb:Button("范围60", function()
+    _G.HeadSize = 60 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
+end)
+
+creditshubb:Button("范围70", function()
+    _G.HeadSize = 70 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
+end)
+
+creditshubb:Button("范围80", function()
+    _G.HeadSize = 80 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
+end)
+
+creditshubb:Button("范围90", function()
+    _G.HeadSize = 90 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
+end)
+
+creditshubb:Button("范围100", function()
+    _G.HeadSize = 100 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
+end)
+
+creditshubb:Button("范围150", function()
+    _G.HeadSize = 150 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
+end)
+
+creditshubb:Button("范围200", function()
+    _G.HeadSize = 200 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
+end)
+
+creditshubb:Button("范围250", function()
+    _G.HeadSize = 250 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
+end)
+
+creditshubb:Button("范围300", function()
+    _G.HeadSize = 300 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
+end)
+    
+local creds = window:Tab("音乐",'6031097229')
+
+local credits = creds:section("音乐播放",true)
+
+credits:Button("防空警报", function()
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://792323017"
+    sound.Parent = game.Workspace
+    sound:Play()
+    end)
+    
+credits:Button("义勇军进行曲", function()
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://1845918434"
+    sound.Parent = game.Workspace
+    sound:Play()
+    end)
+    
+    credits:Button("雨中流浪", function()
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://1683110839393"
+    sound.Parent = game.Workspace
+    sound:Play()
+    end)
+    credits:Button("米老鼠", function()
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://8491769438"
+    sound.Parent = game.Workspace
+    sound:Play()
+    end)
+    
+    credits:Button("骨灰给你扬了", function()
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://7691078503"
+    sound.Parent = game.Workspace
+    sound:Play()
+    end)
+    
+    credits:Button("齐天大圣", function()
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://8195914641"
+    sound.Parent = game.Workspace
+    sound:Play()
+    end)
+    
+    credits:Button("卡车鸣笛", function()
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://3900067524"
+    sound.Parent = game.Workspace
+    sound:Play()
+    end)
+    
+    credits:Button("算命先生", function()
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://6086894326"
+    sound.Parent = game.Workspace
+    sound:Play()
+    end)
     
