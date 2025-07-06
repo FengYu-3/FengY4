@@ -178,14 +178,14 @@ credits:Toggle("脚本框架变小一点", "", false, function(state)
         end
     end)
     
-        credits:Button("摧毁GUI",function()
-            game:GetService("CoreGui")["frosty is cute"]:Destroy()
-        end)
+        credits:Button("扔出去",function()
+            game:GetService("CoreGui")["frosty"]:Destroy()
+    end)
 
 local creds = window:Tab("通用",'7733765398')
 
 local credits = creds:section("通用脚本",true)
-credits:Textbox("快速跑步(推荐调2)", "tpwalking", "输入", function(king)
+    credits:Textbox("快速跑步(推荐调2)", "tpwalking", "输入", function(king)
 local tspeed = king
 local hb = game:GetService("RunService").Heartbeat
 local tpwalking = true
@@ -226,7 +226,7 @@ game.Players.ChildRemoved:Connect(function(player)
     end
 end)
 
-credits:Button("传送到玩家旁边", function()
+    credits:Button("传送到玩家旁边", function()
     local HumRoot = game.Players.LocalPlayer.Character.HumanoidRootPart
     local tp_player = game.Players:FindFirstChild(playernamedied)
     if tp_player and tp_player.Character and tp_player.Character.HumanoidRootPart then
@@ -237,7 +237,7 @@ credits:Button("传送到玩家旁边", function()
     end
 end)
 
-credits:Button("把玩家传送过来", function()
+    credits:Button("把玩家传送过来", function()
     local HumRoot = game.Players.LocalPlayer.Character.HumanoidRootPart
     local tp_player = game.Players:FindFirstChild(playernamedied)
     if tp_player and tp_player.Character and tp_player.Character.HumanoidRootPart then
@@ -248,7 +248,7 @@ credits:Button("把玩家传送过来", function()
     end
 end)
 
-about:Toggle("查看玩家", 'Toggleflag', false, function(state)
+    about:Toggle("查看玩家", 'Toggleflag', false, function(state)
     if state then
         game:GetService('Workspace').CurrentCamera.CameraSubject =
             game:GetService('Players'):FindFirstChild(playernamedied).Character.Humanoid
