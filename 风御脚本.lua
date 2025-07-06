@@ -140,7 +140,7 @@ GunHook = hookmetamethod(game, "__namecall", function(self, ...)
 end);
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/FengYu-3/FengY4/refs/heads/main/%E6%B1%BD%E6%B0%B4ui.lua", true))()
 ----------------------------------------------------------------------------------------------------------------------------------------
-local window = library:new("汽水脚本")--V1
+local window = library:new("汽脚本")--V1
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 local creds = window:Tab("关于", "6031097229")
