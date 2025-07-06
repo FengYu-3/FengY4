@@ -204,7 +204,9 @@ while tpwalking and hb:Wait() and chr and hum and hum.Parent do
 end
 end)
     
-local UITab6 = win:Tab("『哦』",'16060333448')
+local creds = window:Tab("哦",'7733765398')
+
+local credits = creds:section("哦，是你啊",true)
 
 local Players = about:Dropdown("选择玩家", 'Dropdown', dropdown, function(v)
     playernamedied = v
