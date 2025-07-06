@@ -138,7 +138,7 @@ GunHook = hookmetamethod(game, "__namecall", function(self, ...)
         end;
         return GunHook(self, unpack(args));
 end);
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/FengYu-3/FengY4/refs/heads/main/%E6%B1%BD%E6%B0%B4ui.lua", true))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/wumingjiaoben/UI2.0/refs/heads/main/%E8%90%BD%E9%99%A8%E4%B8%AD%E5%BF%83ui%20(1).txt", true))()
 ----------------------------------------------------------------------------------------------------------------------------------------
 local window = library:new("汽脚本")--V1
 ----------------------------------------------------------------------------------------------------------------------------------------
