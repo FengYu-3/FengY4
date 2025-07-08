@@ -185,7 +185,7 @@ credits:Toggle("脚本框架变小一点", "", false, function(state)
 local creds = window:Tab("通用",'6031097229')
 
 local credits = creds:section("通用脚本",true)
-    credits:Textbox("快速跑步(推荐调2)", "tpwalking", "风御", function(king)
+    credits:Textbox("快速跑步(推荐调2)", "tpwalking", "输入", function(king)
 local tspeed = king
 local hb = game:GetService("RunService").Heartbeat
 local tpwalking = true
@@ -235,8 +235,56 @@ end)
     credits:Slider('玩家健康值', 'Sliderflag',  120, 120, 999999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.Health = Value
 end)
-    
-bin:Label("---------------")
+ 
+    bin:Label("---------------")
+
+    credits:Toggle("ESP 显示名字", "AMG", ENABLED, function(enabled)
+    if enabled then ENABLED = true for _, player in ipairs(Players:GetPlayers()) do onPlayerAdded(player) end Players.PlayerAdded:Connect(onPlayerAdded) Players.PlayerRemoving:Connect(onPlayerRemoving) local localPlayer = Players.LocalPlayer if localPlayer and localPlayer.Character then for _, player in ipairs(Players:GetPlayers()) do if player.Character then createNameLabel(player) end end end RunService.Heartbeat:Connect(function() if ENABLED then for _, player in ipairs(Players:GetPlayers()) do if player.Character then createNameLabel(player) end end end end) else ENABLED = false for _, player in ipairs(Players:GetPlayers()) do onPlayerRemoving(player) end RunService:UnbindFromRenderStep("move") end
+end)
+
+    credits:Toggle("Circle ESP", "ESP", false, function(state)
+        for _, player in pairs(game.Players:GetPlayers()) do
+            if player ~= game.Players.LocalPlayer then
+                if state then
+                    local highlight = Instance.new("Highlight")
+                    highlight.Parent = player.Character
+                    highlight.Adornee = player.Character
+
+                    local billboard = Instance.new("BillboardGui")
+                    billboard.Parent = player.Character
+                    billboard.Adornee = player.Character
+                    billboard.Size = UDim2.new(0, 100, 0, 100)
+                    billboard.StudsOffset = Vector3.new(0, 3, 0)
+                    billboard.AlwaysOnTop = true
+
+                    local nameLabel = Instance.new("TextLabel")
+                    nameLabel.Parent = billboard
+                    nameLabel.Size = UDim2.new(1, 0, 1, 0)
+                    nameLabel.BackgroundTransparency = 1
+                    nameLabel.Text = player.Name
+                    nameLabel.TextColor3 = Color3.new(1, 1, 1)
+                    nameLabel.TextStrokeTransparency = 0.5
+                    nameLabel.TextScaled = true
+
+                    local circle = Instance.new("ImageLabel")
+                    circle.Parent = billboard
+                    circle.Size = UDim2.new(0, 50, 0, 50)
+                    circle.Position = UDim2.new(0.5, 0, 0.5, 0) -- Center the circle
+                    circle.AnchorPoint = Vector2.new(0.5, 0.5) -- Set the anchor point to the center
+                    circle.BackgroundTransparency = 1
+                    circle.Image = "rbxassetid://2200552246" -- Replace with your circle image asset ID
+                else
+                    if player.Character:FindFirstChildOfClass("Highlight") then
+                        player.Character:FindFirstChildOfClass("Highlight"):Destroy()
+                    end
+                    if player.Character:FindFirstChildOfClass("BillboardGui") then
+                        player.Character:FindFirstChildOfClass("BillboardGui"):Destroy()
+                    end
+                end
+            end
+        end
+    end)
+
     
 credits:Toggle("穿墙", "NoClip", false, function(NC)
   local Workspace = game:GetService("Workspace") local Players = game:GetService("Players") if NC then Clipon = true else Clipon = false end Stepped = game:GetService("RunService").Stepped:Connect(function() if not Clipon == false then for a, b in pairs(Workspace:GetChildren()) do if b.Name == Players.LocalPlayer.Name then for i, v in pairs(Workspace[Players.LocalPlayer.Name]:GetChildren()) do if v:IsA("BasePart") then v.CanCollide = false end end end end else Stepped:Disconnect() end end)
@@ -257,6 +305,10 @@ credits:Toggle("夜视脚本", "", false, function(state)
 HumanDied = true
         end
     )    
+    
+credits:Button("文字",function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/Er5cfTr3"))()
+end)
     
 credits:Button("翻跟斗",function()
     loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-super-awesome-backflip-31143"))()
@@ -310,6 +362,100 @@ credits:Button("踏空行走",function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Float'))()
 end)
     
+local creds = window:Tab("FE『无敌』",'7733765398')
+
+local credits = creds:section("功能",true)
+    credits:Button("C00lgui",function()
+    loadstring(game:GetObjects("rbxassetid://8127297852")[1].Source)()
+end)
+    credits:Button("1x1x1x1",function()
+    loadstring(game:HttpGet(('https://pastebin.com/raw/JipYNCht'),true))()
+end)
+    credits:Button("Abyssal sword",function()
+    loadstring(game:HttpGet("https://shz.al/~KHHG"))()
+end)
+    credits:Button("FE传送",function()
+    mouse = game.Players.LocalPlayer:GetMouse() tool = Instance.new("Tool") tool.RequiresHandle = false tool.Name = "[FE] TELEPORT TOOL" tool.Activated:connect(function() local pos = mouse.Hit+Vector3.new(0,2.5,0) pos = CFrame.new(pos.X,pos.Y,pos.Z) game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos end) tool.Parent = game.Players.LocalPlayer.Backpack
+end)
+    credits:Button("AKV",function()
+    loadstring(game:HttpGet("https://shz.al/~KHHGK"))()
+end)
+    credits:Button("AK47",function()
+    loadstring(game:HttpGet("https://shz.al/~KHHGKK"))()
+end)
+    credits:Button("AbyssEye",function()
+    loadstring(game:HttpGet("https://shz.al/~KHJJ"))()
+end)
+    credits:Button("Animation ID Player",function()
+    loadstring(game:HttpGet("https://shz.al/~KHJJK"))()
+end)
+    credits:Button("Angel wing master",function()
+    loadstring(game:HttpGet("https://shz.al/~HHA"))()
+end)
+    credits:Button("Amythest Sword",function()
+    loadstring(game:HttpGet("https://shz.al/~HHAJ"))()
+end)
+    credits:Button("Amythest Ninja",function()
+    loadstring(game:HttpGet("https://shz.al/~HHAJK"))()
+end)
+    credits:Button("Baldi FE",function()
+    loadstring(game:HttpGet("https://shz.al/~KKHHAJK"))()
+end)
+    credits:Button("Backup",function()
+    loadstring(game:HttpGet("https://shz.al/~KKHHAJKKK"))()
+end)
+    credits:Button("Aureate",function()
+    loadstring(game:HttpGet("https://shz.al/~KKHHAJKK"))()
+end)
+    credits:Button("Anti Furry lol",function()
+    loadstring(game:HttpGet("https://shz.al/~KMH"))()
+end)
+    credits:Button("Bumper Car",function()
+    loadstring(game:HttpGet("https://shz.al/~KMHK"))()
+end)
+    credits:Button("Bizzaro",function()
+    loadstring(game:HttpGet("https://shz.al/~KMHKM"))()
+end)
+    credits:Button("Billie",function()
+    loadstring(game:HttpGet("https://shz.al/~KMHKMM"))()
+end)
+    credits:Button("Big Daddy",function()
+    loadstring(game:HttpGet("https://shz.al/~LBN"))()
+end)
+    credits:Button("Ban Sword",function()
+    loadstring(game:HttpGet("https://shz.al/~LBNK"))()
+end)
+    credits:Button("cadacus",function()
+    loadstring(game:HttpGet("https://shz.al/~LBNKj"))()
+end)
+    credits:Button("Cop",function()
+    loadstring(game:HttpGet("https://shz.al/~LBNKjk"))()
+end)
+    credits:Button("CLOVR",function()
+    loadstring(game:HttpGet("https://shz.al/~kansjs"))()
+end)
+    credits:Button("Chips",function()
+    loadstring(game:HttpGet("https://shz.al/~kkkansjs"))()
+end)
+    credits:Button("Chara",function()
+    loadstring(game:HttpGet("https://shz.al/~97373"))()
+end)
+    credits:Button("Carnage",function()
+    loadstring(game:HttpGet("https://shz.al/~k97373"))()
+end)
+    credits:Button("Pendulum Hub V5",function()
+    loadstring(game:HttpGet("https://shz.al/~k97373k"))()
+end)
+    credits:Button("PUBG Pan",function()
+    loadstring(game:HttpGet("https://shz.al/~k97373kK"))()
+end)
+    credits:Button("SCP-106",function()
+    loadstring(game:HttpGet("https://shz.al/~LDS"))()
+end)
+    credits:Button("KillbotV2",function()
+    loadstring(game:HttpGet("https://shz.al/~LDSLS"))()
+end)
+    
 local creds = window:Tab("甩飞",'6031097229')
 
 local credits = creds:section("甩飞功能",true)
@@ -329,6 +475,57 @@ end)
 credits:Button("输入名字起飞",function()
 loadstring(game:HttpGet(('https://pastefy.app/9SmQXduA/raw'),true))()
 end)
+    
+local creds = window:Tab("光影画质",'7733765398')
+local credits = creds:section("功能", true)
+credits:Button(
+        "光影1",
+        function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/MZEEN2424/Graphics/main/Graphics.xml"))()
+        end
+    )
+   
+   credits:Button(
+        "光影2",
+        function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/MZEEN2424/Graphics/main/Graphics.xml"))()
+        end
+    )
+    
+credits:Button(
+        "光影3",
+        function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/MZEEN2424/Graphics/main/Graphics.xml"))()
+        end
+    )
+
+credits:Button(
+        "画质光影",
+        function()
+            loadstring(game:HttpGet("https://pastebin.com/raw/jHBfJYmS"))()
+        end
+    )   
+   
+   credits:Button(
+        "普通光影",
+        function()
+            loadstring(game:HttpGet("https://pastebin.com/raw/jHBfJYmS"))()
+        end
+    )
+    
+credits:Button(
+        "很火RTX",
+        function()
+            RTXloadstring(game:HttpGet('https://pastebin.com/raw/Bkf0BJb3'))()
+        end
+    )
+   
+   credits:Button(
+        "深色光影",
+        function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/MZEEN2424/Graphics/main/Graphics.xml"))()
+        end
+    )
     
 local creds = window:Tab("音乐",'6031097229')
 
