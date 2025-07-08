@@ -284,6 +284,36 @@ end)
     end)
 
     
+credits:Button("坐",function()
+    local c = lp.Character
+	if c and c.Parent then
+		local hum = c:FindFirstChildOfClass("Humanoid")
+		if hum then
+			hum.Sit = not hum.Sit
+		else
+			notify("humanoid not found")
+		end
+	else
+		notify("character not found")
+	end
+end)
+    
+credits:Button("假坐",function()
+    local c = lp.Character
+	if c and c.Parent then
+		local hum = c:FindFirstChildOfClass("Humanoid")
+		if hum then
+		    hum:SetStateEnabled(Enum.HumanoidStateType.Seated, false)
+			hum.Sit = true
+			notify("humanoid.Sit set to true")
+		else
+			notify("humanoid not found")
+		end
+	else
+		notify("character not found")
+	end
+end)
+
 credits:Toggle("穿墙", "NoClip", false, function(NC)
   local Workspace = game:GetService("Workspace") local Players = game:GetService("Players") if NC then Clipon = true else Clipon = false end Stepped = game:GetService("RunService").Stepped:Connect(function() if not Clipon == false then for a, b in pairs(Workspace:GetChildren()) do if b.Name == Players.LocalPlayer.Name then for i, v in pairs(Workspace[Players.LocalPlayer.Name]:GetChildren()) do if v:IsA("BasePart") then v.CanCollide = false end end end end else Stepped:Disconnect() end end)
     end)
@@ -429,6 +459,10 @@ credits:Button("死亡笔记",function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/dingding123hhh/tt/main/%E6%AD%BB%E4%BA%A1%E7%AC%94%E8%AE%B0%20(1).txt"))()
 end)
     
+credits:Button("不知道",function()
+    loadstring(game:HttpGet("https://shz.al/~HHHS"))()
+end)
+
 credits:Button("飞檐走壁",function()
     loadstring(game:HttpGet("https://pastebin.com/raw/zXk4Rq2r"))()
 end)
