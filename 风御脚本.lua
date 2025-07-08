@@ -308,6 +308,87 @@ credits:Button("翻跟斗",function()
     loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-super-awesome-backflip-31143"))()
 end)
     
+credits:Button(
+        "直升机",
+        function()
+            if game.Players.LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
+spawn(function()
+local speaker = game.Players.LocalPlayer
+local Anim = Instance.new("Animation")
+     Anim.AnimationId = "rbxassetid://27432686"
+     local bruh = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+bruh:Play()
+bruh:AdjustSpeed(0)
+speaker.Character.Animate.Disabled = true
+local hi = Instance.new("Sound")
+hi.Name = "Sound"
+hi.SoundId = "http://www.roblox.com/asset/?id=165113352"
+hi.Volume = 2
+hi.Looped = true
+hi.archivable = false
+hi.Parent = game.Workspace
+hi:Play()
+
+local spinSpeed = 40
+local Spin = Instance.new("BodyAngularVelocity")
+Spin.Name = "Spinning"
+Spin.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+Spin.MaxTorque = Vector3.new(0, math.huge, 0)
+Spin.AngularVelocity = Vector3.new(0,spinSpeed,0)
+
+end)
+else
+spawn(function()
+local speaker = game.Players.LocalPlayer
+local Anim = Instance.new("Animation")
+     Anim.AnimationId = "rbxassetid://507776043"
+     local bruh = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+bruh:Play()
+bruh:AdjustSpeed(0)
+speaker.Character.Animate.Disabled = true
+local hi = Instance.new("Sound")
+hi.Name = "Sound"
+hi.SoundId = "http://www.roblox.com/asset/?id=165113352"
+hi.Volume = 2
+hi.Looped = true
+hi.archivable = false
+hi.Parent = game.Workspace
+hi:Play()
+
+local spinSpeed = 40
+local Spin = Instance.new("BodyAngularVelocity")
+Spin.Name = "Spinning"
+Spin.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+Spin.MaxTorque = Vector3.new(0, math.huge, 0)
+Spin.AngularVelocity = Vector3.new(0,spinSpeed,0)
+
+
+end)    
+end
+local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
+local u = game.Players.LocalPlayer
+local urchar = u.Character
+
+task.spawn(function()
+
+
+qUp = Mouse.KeyUp:Connect(function(KEY)
+if KEY == 'q' then
+urchar.Humanoid.HipHeight = urchar.Humanoid.HipHeight - 3
+end
+end)
+eUp = Mouse.KeyUp:Connect(function(KEY)
+if KEY == 'e' then
+urchar.Humanoid.HipHeight = urchar.Humanoid.HipHeight + 3
+end
+end)
+
+
+end)
+        end
+    )    
+
+
 credits:Button("无限跳",function()
     loadstring(game:HttpGet("https://pastebin.com/raw/V5PQy3y0", true))()
 end)
@@ -386,6 +467,10 @@ end)
 credits:Button("甩飞所有人",function()
 loadstring(game:HttpGet("https://pastebin.com/raw/zqyDSUWX"))()
 end)
+   
+credits:Button("铁拳",function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/0Ben1/fe/main/obf_rf6iQURzu1fqrytcnLBAvW34C9N55kS9g9G3CKz086rC47M6632sEd4ZZYB0AYgV.lua.txt'))()
+end)
     
 credits:Button("输入名字起飞",function()
 loadstring(game:HttpGet(('https://pastefy.app/9SmQXduA/raw'),true))()
@@ -428,13 +513,6 @@ credits:Button(
         end
     )
     
-credits:Button(
-        "很火RTX",
-        function()
-            RTXloadstring(game:HttpGet('https://pastebin.com/raw/Bkf0BJb3'))()
-        end
-    )
-   
    credits:Button(
         "深色光影",
         function()
