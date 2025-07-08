@@ -159,14 +159,7 @@ end)
     setclipboard("风御 X：不处谢谢")
 end)
     
-    bin:Label("你的账号年龄:"..player.AccountAge.."天")
 
-    bin:Label("您当前服务器的ID", " "..game.GameId.."")
-
-    bin:Label("您的注入器:", " "..identifyexecutor().."")
-
-    bin:Label("您的用户名:", " "..game.Players.LocalPlayer.Name.."")
-    
     bin:Label("禁止倒卖")
     bin:Label("感谢支持")
     
@@ -374,7 +367,7 @@ end)
     mouse = game.Players.LocalPlayer:GetMouse() tool = Instance.new("Tool") tool.RequiresHandle = false tool.Name = "[FE] TELEPORT TOOL" tool.Activated:connect(function() local pos = mouse.Hit+Vector3.new(0,2.5,0) pos = CFrame.new(pos.X,pos.Y,pos.Z) game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos end) tool.Parent = game.Players.LocalPlayer.Backpack
 end)
     
-    credits:Button("手枪『别人看不见』",function()
+    credits:Button("手枪『只是模型』",function()
     loadstring(game:HttpGet("https://pastebin.com/raw/Er5cfTr3"))()
 end)
     
