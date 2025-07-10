@@ -329,7 +329,7 @@ credits:Button("改fps",function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/gclich/FPS-X-GUI/main/FPS_X.lua"))()
 end)
  
-    credits:Button("透视",function()  
+credits:Button("透视",function()  
     _G.FriendColor = Color3.fromRGB(0, 0, 255)
         local function ApplyESP(v)
        if v.Character and v.Character:FindFirstChildOfClass'Humanoid' then
