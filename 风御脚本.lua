@@ -204,11 +204,6 @@ while tpwalking and hb:Wait() and chr and hum and hum.Parent do
 end
 end)
     
-credits:Slider('修改跳跃', 'JumpPowerSlider', 50, 50, 99999,false, function(Value)
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed, 16, 400, false, function(Speed)
-  spawn(function() while task.wait() do game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Speed end
-end)
-    
     credits:Slider('修改跳跃', 'JumpPowerSlider', 50, 50, 99999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
 end)
@@ -314,6 +309,10 @@ credits:Button("翻跟斗",function()
     loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-super-awesome-backflip-31143"))()
 end)
     
+credits:Button("控制npc",function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/randomstring0/fe-source/refs/heads/main/NPC/source/main.Luau"))()
+end)
+ 
 credits:Button("无限跳",function()
     loadstring(game:HttpGet("https://pastebin.com/raw/V5PQy3y0", true))()
 end)
@@ -329,7 +328,79 @@ end)
 credits:Button("改fps",function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/gclich/FPS-X-GUI/main/FPS_X.lua"))()
 end)
+ 
+    credits:Button("透视",function()  
+    _G.FriendColor = Color3.fromRGB(0, 0, 255)
+        local function ApplyESP(v)
+       if v.Character and v.Character:FindFirstChildOfClass'Humanoid' then
+           v.Character.Humanoid.NameDisplayDistance = 9e9
+           v.Character.Humanoid.NameOcclusion = "NoOcclusion"
+           v.Character.Humanoid.HealthDisplayDistance = 9e9
+           v.Character.Humanoid.HealthDisplayType = "AlwaysOn"
+           v.Character.Humanoid.Health = v.Character.Humanoid.Health -- triggers changed
+       end
+    end
+    for i,v in pairs(game.Players:GetPlayers()) do
+       ApplyESP(v)
+       v.CharacterAdded:Connect(function()
+           task.wait(0.33)
+           ApplyESP(v)
+       end)
+    end
     
+    game.Players.PlayerAdded:Connect(function(v)
+       ApplyESP(v)
+       v.CharacterAdded:Connect(function()
+           task.wait(0.33)
+           ApplyESP(v)
+       end)
+    end)
+    
+        local Players = game:GetService("Players"):GetChildren()
+    local RunService = game:GetService("RunService")
+    local highlight = Instance.new("Highlight")
+    highlight.Name = "Highlight"
+    
+    for i, v in pairs(Players) do
+        repeat wait() until v.Character
+        if not v.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") then
+            local highlightClone = highlight:Clone()
+            highlightClone.Adornee = v.Character
+            highlightClone.Parent = v.Character:FindFirstChild("HumanoidRootPart")
+            highlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+            highlightClone.Name = "Highlight"
+        end
+    end
+    
+    game.Players.PlayerAdded:Connect(function(player)
+        repeat wait() until player.Character
+        if not player.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") then
+            local highlightClone = highlight:Clone()
+            highlightClone.Adornee = player.Character
+            highlightClone.Parent = player.Character:FindFirstChild("HumanoidRootPart")
+            highlightClone.Name = "Highlight"
+        end
+    end)
+    
+    game.Players.PlayerRemoving:Connect(function(playerRemoved)
+        playerRemoved.Character:FindFirstChild("HumanoidRootPart").Highlight:Destroy()
+    end)
+    
+    RunService.Heartbeat:Connect(function()
+        for i, v in pairs(Players) do
+            repeat wait() until v.Character
+            if not v.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") then
+                local highlightClone = highlight:Clone()
+                highlightClone.Adornee = v.Character
+                highlightClone.Parent = v.Character:FindFirstChild("HumanoidRootPart")
+                highlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+                highlightClone.Name = "Highlight"
+                task.wait()
+            end
+    end
+    end)
+end)
+       
 credits:Button(
         "防止挂机",
         function()
@@ -350,10 +421,6 @@ CoreGui:SetCore("SendNotification", {
         end
     )    
     
-credits:Button("控制npc",function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/randomstring0/fe-source/refs/heads/main/NPC/source/main.Luau"))()
-end)
-
 credits:Button("死亡笔记",function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/dingding123hhh/tt/main/%E6%AD%BB%E4%BA%A1%E7%AC%94%E8%AE%B0%20(1).txt"))()
 end)
@@ -536,6 +603,18 @@ credits:Button(
         end
     )
     
+local creds = window:Tab("其他脚本",'6031097229')
+
+local credits = creds:section("脚本呢？",true)
+
+credits:Button("皮脚本",function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/xiaopi77/xiaopi77/main/QQ1002100032-Roblox-Pi-script.lua"))()
+end)
+
+credits:Button("叶脚本",function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/roblox-ye/QQ515966991/refs/heads/main/ROBLOX-CNVIP-XIAOYE.lua"))()
+end)
+
 local creds = window:Tab("音乐",'6031097229')
 
 local credits = creds:section("音乐播放",true)
