@@ -204,7 +204,7 @@ while tpwalking and hb:Wait() and chr and hum and hum.Parent do
 end
 end)
     
-credits:Slider('修改跳跃', 'JumpPowerSlider', 120, 120, 99999,false, function(Value)
+credits:Slider('修改速度', 'JumpPowerSlider', 120, 120, 99999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
 end)
     
@@ -317,7 +317,7 @@ credits:Button("透视",function()
             end
     end
     end)
-    end)
+end)
     
     credits:Toggle("ESP 显示名字", "AMG", ENABLED, function(enabled)
     if enabled then ENABLED = true for _, player in ipairs(Players:GetPlayers()) do onPlayerAdded(player) end Players.PlayerAdded:Connect(onPlayerAdded) Players.PlayerRemoving:Connect(onPlayerRemoving) local localPlayer = Players.LocalPlayer if localPlayer and localPlayer.Character then for _, player in ipairs(Players:GetPlayers()) do if player.Character then createNameLabel(player) end end end RunService.Heartbeat:Connect(function() if ENABLED then for _, player in ipairs(Players:GetPlayers()) do if player.Character then createNameLabel(player) end end end end) else ENABLED = false for _, player in ipairs(Players:GetPlayers()) do onPlayerRemoving(player) end RunService:UnbindFromRenderStep("move") end
