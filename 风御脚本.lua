@@ -204,6 +204,10 @@ while tpwalking and hb:Wait() and chr and hum and hum.Parent do
 end
 end)
     
+credits:Slider('修改跳跃', 'JumpPowerSlider', 120, 120, 99999,false, function(Value)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+end)
+    
 credits:Slider('修改跳跃', 'JumpPowerSlider', 50, 50, 99999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed, 16, 400, false, function(Speed)
   spawn(function() while task.wait() do game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Speed end
@@ -243,7 +247,7 @@ end)
  
 local credits = creds:section("通用脚本",true)
 
-credits:Toggle("透视", "", false, function(state)  
+credits:Button("透视",function()  
     _G.FriendColor = Color3.fromRGB(0, 0, 255)
         local function ApplyESP(v)
        if v.Character and v.Character:FindFirstChildOfClass'Humanoid' then
