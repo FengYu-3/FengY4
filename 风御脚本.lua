@@ -184,7 +184,7 @@ credits:Toggle("脚本框架变小一点", "", false, function(state)
 
 local creds = window:Tab("通用",'6031097229')
 
-local credits = creds:section("通用脚本",true)
+local credits = creds:section("其他",true)
     credits:Textbox("快速跑步(推荐调2)", "tpwalking", "输入", function(king)
 local tspeed = king
 local hb = game:GetService("RunService").Heartbeat
@@ -202,6 +202,11 @@ while tpwalking and hb:Wait() and chr and hum and hum.Parent do
     end
   end
 end
+end)
+    
+credits:Slider('修改跳跃', 'JumpPowerSlider', 50, 50, 99999,false, function(Value)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed, 16, 400, false, function(Speed)
+  spawn(function() while task.wait() do game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Speed end
 end)
     
     credits:Slider('修改跳跃', 'JumpPowerSlider', 50, 50, 99999,false, function(Value)
@@ -236,6 +241,80 @@ end)
     game.Players.LocalPlayer.Character.Humanoid.Health = Value
 end)
  
+local credits = creds:section("通用脚本",true)
+
+credits:Toggle("透视", "", false, function(state)  
+    _G.FriendColor = Color3.fromRGB(0, 0, 255)
+        local function ApplyESP(v)
+       if v.Character and v.Character:FindFirstChildOfClass'Humanoid' then
+           v.Character.Humanoid.NameDisplayDistance = 9e9
+           v.Character.Humanoid.NameOcclusion = "NoOcclusion"
+           v.Character.Humanoid.HealthDisplayDistance = 9e9
+           v.Character.Humanoid.HealthDisplayType = "AlwaysOn"
+           v.Character.Humanoid.Health = v.Character.Humanoid.Health -- triggers changed
+       end
+    end
+    for i,v in pairs(game.Players:GetPlayers()) do
+       ApplyESP(v)
+       v.CharacterAdded:Connect(function()
+           task.wait(0.33)
+           ApplyESP(v)
+       end)
+    end
+    
+    game.Players.PlayerAdded:Connect(function(v)
+       ApplyESP(v)
+       v.CharacterAdded:Connect(function()
+           task.wait(0.33)
+           ApplyESP(v)
+       end)
+    end)
+    
+        local Players = game:GetService("Players"):GetChildren()
+    local RunService = game:GetService("RunService")
+    local highlight = Instance.new("Highlight")
+    highlight.Name = "Highlight"
+    
+    for i, v in pairs(Players) do
+        repeat wait() until v.Character
+        if not v.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") then
+            local highlightClone = highlight:Clone()
+            highlightClone.Adornee = v.Character
+            highlightClone.Parent = v.Character:FindFirstChild("HumanoidRootPart")
+            highlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+            highlightClone.Name = "Highlight"
+        end
+    end
+    
+    game.Players.PlayerAdded:Connect(function(player)
+        repeat wait() until player.Character
+        if not player.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") then
+            local highlightClone = highlight:Clone()
+            highlightClone.Adornee = player.Character
+            highlightClone.Parent = player.Character:FindFirstChild("HumanoidRootPart")
+            highlightClone.Name = "Highlight"
+        end
+    end)
+    
+    game.Players.PlayerRemoving:Connect(function(playerRemoved)
+        playerRemoved.Character:FindFirstChild("HumanoidRootPart").Highlight:Destroy()
+    end)
+    
+    RunService.Heartbeat:Connect(function()
+        for i, v in pairs(Players) do
+            repeat wait() until v.Character
+            if not v.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") then
+                local highlightClone = highlight:Clone()
+                highlightClone.Adornee = v.Character
+                highlightClone.Parent = v.Character:FindFirstChild("HumanoidRootPart")
+                highlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+                highlightClone.Name = "Highlight"
+                task.wait()
+            end
+    end
+    end)
+    end)
+    
     credits:Toggle("ESP 显示名字", "AMG", ENABLED, function(enabled)
     if enabled then ENABLED = true for _, player in ipairs(Players:GetPlayers()) do onPlayerAdded(player) end Players.PlayerAdded:Connect(onPlayerAdded) Players.PlayerRemoving:Connect(onPlayerRemoving) local localPlayer = Players.LocalPlayer if localPlayer and localPlayer.Character then for _, player in ipairs(Players:GetPlayers()) do if player.Character then createNameLabel(player) end end end RunService.Heartbeat:Connect(function() if ENABLED then for _, player in ipairs(Players:GetPlayers()) do if player.Character then createNameLabel(player) end end end end) else ENABLED = false for _, player in ipairs(Players:GetPlayers()) do onPlayerRemoving(player) end RunService:UnbindFromRenderStep("move") end
 end)
@@ -282,38 +361,7 @@ end)
             end
         end
     end)
-
     
-credits:Button("坐",function()
-    local c = lp.Character
-	if c and c.Parent then
-		local hum = c:FindFirstChildOfClass("Humanoid")
-		if hum then
-			hum.Sit = not hum.Sit
-		else
-			notify("humanoid not found")
-		end
-	else
-		notify("character not found")
-	end
-end)
-    
-credits:Button("假坐",function()
-    local c = lp.Character
-	if c and c.Parent then
-		local hum = c:FindFirstChildOfClass("Humanoid")
-		if hum then
-		    hum:SetStateEnabled(Enum.HumanoidStateType.Seated, false)
-			hum.Sit = true
-			notify("humanoid.Sit set to true")
-		else
-			notify("humanoid not found")
-		end
-	else
-		notify("character not found")
-	end
-end)
-
 credits:Toggle("穿墙", "NoClip", false, function(NC)
   local Workspace = game:GetService("Workspace") local Players = game:GetService("Players") if NC then Clipon = true else Clipon = false end Stepped = game:GetService("RunService").Stepped:Connect(function() if not Clipon == false then for a, b in pairs(Workspace:GetChildren()) do if b.Name == Players.LocalPlayer.Name then for i, v in pairs(Workspace[Players.LocalPlayer.Name]:GetChildren()) do if v:IsA("BasePart") then v.CanCollide = false end end end end else Stepped:Disconnect() end end)
     end)
@@ -338,7 +386,65 @@ credits:Button("翻跟斗",function()
     loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-super-awesome-backflip-31143"))()
 end)
     
+credits:Button("无限跳",function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/V5PQy3y0", true))()
+end)
+    
+credits:Button("玩家加入游戏提示",function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/boyscp/scriscriptsc/main/bbn.lua"))()
+end)
+    
+credits:Button("fps显示",function()
+loadstring(game:HttpGet("https://pastefy.app/d9j82YJr/raw",true))()
+end)
+    
+credits:Button("改fps",function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/gclich/FPS-X-GUI/main/FPS_X.lua"))()
+end)
+    
 credits:Button(
+        "防止挂机",
+        function()
+            wait(2)
+	print("Anti Afk On")
+		local vu = game:GetService("VirtualUser")
+		game:GetService("Players").LocalPlayer.Idled:connect(function()
+		   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+		   wait(1)
+		   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+		end)
+	local CoreGui = game:GetService("StarterGui")
+CoreGui:SetCore("SendNotification", {
+    Title = "惊喜吗",
+    Text = "恭喜你开启失败",
+    Duration = 10,
+})
+        end
+    )    
+    
+credits:Button("控制npc",function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/randomstring0/fe-source/refs/heads/main/NPC/source/main.Luau"))()
+end)
+
+credits:Button("死亡笔记",function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/dingding123hhh/tt/main/%E6%AD%BB%E4%BA%A1%E7%AC%94%E8%AE%B0%20(1).txt"))()
+end)
+    
+credits:Button("飞檐走壁",function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/zXk4Rq2r"))()
+end)
+    
+credits:Button("踏空行走",function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Float'))()
+end)
+    
+local credits = creds:section("恶搞",true)
+
+credits:Button("R15撸管",function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/FWwdST5Y"))()
+end)
+    
+    credits:Button(
         "直升机",
         function()
             if game.Players.LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
@@ -419,59 +525,7 @@ end)
     )    
 
 
-credits:Button("无限跳",function()
-    loadstring(game:HttpGet("https://pastebin.com/raw/V5PQy3y0", true))()
-end)
-    
-credits:Button("玩家加入游戏提示",function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/boyscp/scriscriptsc/main/bbn.lua"))()
-end)
-    
-credits:Button("fps显示",function()
-loadstring(game:HttpGet("https://pastefy.app/d9j82YJr/raw",true))()
-end)
-    
-credits:Button("改fps",function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/gclich/FPS-X-GUI/main/FPS_X.lua"))()
-end)
-    
-credits:Button(
-        "防止挂机",
-        function()
-            wait(2)
-	print("Anti Afk On")
-		local vu = game:GetService("VirtualUser")
-		game:GetService("Players").LocalPlayer.Idled:connect(function()
-		   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-		   wait(1)
-		   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-		end)
-	local CoreGui = game:GetService("StarterGui")
-CoreGui:SetCore("SendNotification", {
-    Title = "惊喜吗",
-    Text = "恭喜你开启失败",
-    Duration = 10,
-})
-        end
-    )    
-    
-credits:Button("死亡笔记",function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/dingding123hhh/tt/main/%E6%AD%BB%E4%BA%A1%E7%AC%94%E8%AE%B0%20(1).txt"))()
-end)
-    
-credits:Button("不知道",function()
-    loadstring(game:HttpGet("https://shz.al/~HHHS"))()
-end)
-
-credits:Button("飞檐走壁",function()
-    loadstring(game:HttpGet("https://pastebin.com/raw/zXk4Rq2r"))()
-end)
-    
-credits:Button("踏空行走",function()
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Float'))()
-end)
-    
-local creds = window:Tab("FE『无敌』",'7733765398')
+local creds = window:Tab("FE『能用』",'7733765398')
 
 local credits = creds:section("功能",true)
     credits:Button("C00lgui",function()
