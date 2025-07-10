@@ -204,10 +204,6 @@ while tpwalking and hb:Wait() and chr and hum and hum.Parent do
 end
 end)
     
-credits:Slider('修改速度', 'JumpPowerSlider', 120, 120, 99999,false, function(Value)
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
-end)
-    
 credits:Slider('修改跳跃', 'JumpPowerSlider', 50, 50, 99999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed, 16, 400, false, function(Speed)
   spawn(function() while task.wait() do game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Speed end
